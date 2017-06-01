@@ -213,8 +213,6 @@ The mean and median total number of steps taken per day is 1.0766189\times 10^{4
 
 This seems to highly depend on how you impute the missing data. Since I used the average for a given interval, there was practically no difference because we basically pulled the averages closer to the inserted average value.
 
-<br>
-
 ### Part 5: Are there differences in activity patterns between weekdays and weekends? Use the dataset with the filled-in missing values for this part.
   
 **Create a new factor variable in the dataset with two levels -- "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.**  
