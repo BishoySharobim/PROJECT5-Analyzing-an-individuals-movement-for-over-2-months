@@ -68,7 +68,7 @@ Reproducible Research: Peer Assessment 1
     mediansteps <- median(total$'steps')
 ```
 
-The mean and median total number of steps taken per day is 1.0766189\times 10^{4} and 10765, respectively.
+ The mean and median total number of steps taken per day is 1.0766189\times 10^{4} and 10765, respectively.
 
 <br>
 
@@ -106,6 +106,7 @@ The mean and median total number of steps taken per day is 1.0766189\times 10^{4
 The 835th interval which has a max number of steps of 206.1698113.
 
 <br>
+
 ### Part 4: Input missing values
 **(1) Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)**  
 
@@ -121,6 +122,7 @@ The 835th interval which has a max number of steps of 206.1698113.
 Total number of missing values in the dataset is 2304. 
 
 <br>
+
 **(2) Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.**
 First I will try to replace the NA values with the mean number of total steps for the day for which a given NA value appears.
 
@@ -160,6 +162,7 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
     meanperinterval <- aggregate(steps ~ interval , data1, mean)
 ```
 <br>
+
 **(3) Create a new dataset that is equal to the original dataset but with the missing data filled in.**
 
 
@@ -173,6 +176,7 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
     data3$'steps'[NAindices] <- NAdataset$'steps'  
 ```
 <br>
+
 **(4)**  
 **a) Make a histogram of the total number of steps taken each day.**  
 
@@ -190,6 +194,7 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
 ![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
 <br>
+
 **b) Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment?**  
 
 
@@ -209,7 +214,8 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
 The mean and median total number of steps taken per day is 1.0766189\times 10^{4} and 1.0766189\times 10^{4}, respectively. The mean values are the same, whilst the median steps differ extremely little.
 
 <br>
-**What is the impact of imputing missing data on the estimates of the total daily number of steps?**
+
+**What is the impact of imputing missing data on the estimates of the total daily number of steps?**  
 This seems to highly depend on how you impute the missing data. Since I used the average for a given interval, there was practically no difference because we basically pulled the averages closer to the inserted average value.
 
 <br>
@@ -233,6 +239,7 @@ This seems to highly depend on how you impute the missing data. Since I used the
 ```
 
 <br>
+
 **Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).**  
 
 ```r
