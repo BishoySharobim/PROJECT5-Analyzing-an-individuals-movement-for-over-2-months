@@ -179,7 +179,7 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
 ```
 <br>
 **(4)**  
-***a) Make a histogram of the total number of steps taken each day.**  
+**a) Make a histogram of the total number of steps taken each day.**  
 
 
 ```r
