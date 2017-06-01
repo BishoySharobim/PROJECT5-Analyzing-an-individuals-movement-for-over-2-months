@@ -24,7 +24,7 @@ knitr::opts_chunk$set(cache=TRUE, echo = TRUE)
 
 ```{r}
 
-    setwd("C:/Users/User/Desktop/Cabinet/Career/Data Analysis/R/Coursera/5) Reproducible Research/Week 2/Assignment")
+    #setwd("C:/Users/User/Desktop/Cabinet/Career/Data Analysis/R/Coursera/5) Reproducible Research/Week 2/Assignment")
 
     fileurl <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
 
