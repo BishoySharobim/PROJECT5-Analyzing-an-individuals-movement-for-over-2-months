@@ -13,7 +13,6 @@ Reproducible Research: Peer Assessment 1
 *Bishoy Sharobim*  
 *`r Sys.Date()`*
 
-<br>
 
 ### Part 1: Loading and prepocessing the data 
  
@@ -41,8 +40,6 @@ knitr::opts_chunk$set(cache=TRUE, echo = TRUE)
     
 ```
 
-<br>
-
 **(2) Process/transform the data**
 ```{r}
     data1 <- data
@@ -51,7 +48,6 @@ knitr::opts_chunk$set(cache=TRUE, echo = TRUE)
 
 ```
 
-<br>
 
 ### Part 2: What is mean total number of steps taken per day?
 **(1) Histogram of the total number of steps taken each day.**  
@@ -67,7 +63,6 @@ knitr::opts_chunk$set(cache=TRUE, echo = TRUE)
 
 ```
 
-<br>
 
 **(2) Calculate and report the mean and median total number of steps taken per day**
 ```{r}
@@ -77,8 +72,6 @@ knitr::opts_chunk$set(cache=TRUE, echo = TRUE)
 ```
 
 The mean and median total number of steps taken per day is `r meansteps` and `r mediansteps`, respectively.
-
-<br>
 
 ### Part 3: What is the average daily activity pattern?
 
@@ -96,7 +89,6 @@ The mean and median total number of steps taken per day is `r meansteps` and `r 
 
 ```
 
-<br>
 
 **(2) Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?**
 ```{r}
@@ -107,7 +99,6 @@ The mean and median total number of steps taken per day is `r meansteps` and `r 
   
 The `r as.numeric(meanperinterval[which.max(meanperinterval$'steps'), ][1])`th interval which has a max number of steps of `r as.numeric(meanperinterval[which.max(meanperinterval$'steps'), ][2])`.
 
-<br>
 
 ### Part 4: Input missing values
 
@@ -119,7 +110,6 @@ The `r as.numeric(meanperinterval[which.max(meanperinterval$'steps'), ][1])`th i
 
 Total number of missing values in the dataset is `r sum(is.na(data))`. 
 
-<br>
 **(2) Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.**  
 
 First I will try to replace the NA values with the mean number of total steps for the day for which a given NA value appears.
@@ -136,7 +126,6 @@ First I will try to replace the NA values with the mean number of total steps fo
     
 ```
 
-<br>
 This method cannot work because all missing values occur in all observations for a given day. A particular day has either recorded values for every single interval, or NA values for every single interval. 
 
 Thus I am going to try to use the mean for every 5-min interval across all the days.
@@ -145,7 +134,6 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
     meanperinterval <- aggregate(steps ~ interval , data1, mean)
 ```
 
-<br>
 **(3) Create a new dataset that is equal to the original dataset but with the missing data filled in.**
 
 ```{r}
@@ -159,7 +147,7 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
     data3$'steps'[NAindices] <- NAdataset$'steps'  
     
 ```
-<br>
+
 **(4)**  
 ***a) Make a histogram of the total number of steps taken each day.**  
 
@@ -175,7 +163,6 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
         
 ```
 
-<br>
 **b) Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment?**  
 
 ```{r}
@@ -188,12 +175,11 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
 
 The mean and median total number of steps taken per day is `r meansteps1` and `r mediansteps1`, respectively. The mean values are the same, whilst the median steps differ extremely little.
 
-<br>
+
 **What is the impact of imputing missing data on the estimates of the total daily number of steps?**
 
 This seems to highly depend on how you impute the missing data. Since I used the average for a given interval, there was practically no difference because we basically pulled the averages closer to the inserted average value.
 
-<br>
 
 ### Part 5: Are there differences in activity patterns between weekdays and weekends? Use the dataset with the filled-in missing values for this part.
   
@@ -215,7 +201,6 @@ This seems to highly depend on how you impute the missing data. Since I used the
 
 ```
 
-<br>
 
 **Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).**  
 ```{r}
