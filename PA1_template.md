@@ -4,7 +4,7 @@ Reproducible Research: Peer Assessment 1
 
 
 *Bishoy Sharobim*  
-*2017-06-01*
+*2017-06-02*
 
 <br>
 
@@ -29,6 +29,10 @@ Reproducible Research: Peer Assessment 1
     data <- read.csv("activity.csv")
     
     library(ggplot2)
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.3.3
 ```
 
 <br>
@@ -68,7 +72,7 @@ Reproducible Research: Peer Assessment 1
     mediansteps <- median(total$'steps')
 ```
 
- The mean and median total number of steps taken per day is 1.0766189\times 10^{4} and 10765, respectively.
+The mean and median total number of steps taken per day is 1.0766189\times 10^{4} and 10765, respectively.
 
 <br>
 
@@ -108,6 +112,7 @@ The 835th interval which has a max number of steps of 206.1698113.
 <br>
 
 ### Part 4: Input missing values
+
 **(1) Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)**  
 
 
@@ -123,7 +128,8 @@ Total number of missing values in the dataset is 2304.
 
 <br>
 
-**(2) Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.**
+**(2) Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.**  
+
 First I will try to replace the NA values with the mean number of total steps for the day for which a given NA value appears.
 
 
@@ -153,6 +159,8 @@ First I will try to replace the NA values with the mean number of total steps fo
 ## [1] 0
 ```
 
+<br>
+
 This method cannot work because all missing values occur in all observations for a given day. A particular day has either recorded values for every single interval, or NA values for every single interval. 
 
 Thus I am going to try to use the mean for every 5-min interval across all the days.
@@ -161,6 +169,7 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
 ```r
     meanperinterval <- aggregate(steps ~ interval , data1, mean)
 ```
+
 <br>
 
 **(3) Create a new dataset that is equal to the original dataset but with the missing data filled in.**
@@ -175,10 +184,11 @@ Thus I am going to try to use the mean for every 5-min interval across all the d
     
     data3$'steps'[NAindices] <- NAdataset$'steps'  
 ```
+
 <br>
 
 **(4)**  
-**a) Make a histogram of the total number of steps taken each day.**  
+***a) Make a histogram of the total number of steps taken each day.**  
 
 
 ```r
@@ -215,12 +225,14 @@ The mean and median total number of steps taken per day is 1.0766189\times 10^{4
 
 <br>
 
-**What is the impact of imputing missing data on the estimates of the total daily number of steps?**  
+**What is the impact of imputing missing data on the estimates of the total daily number of steps?**
+
 This seems to highly depend on how you impute the missing data. Since I used the average for a given interval, there was practically no difference because we basically pulled the averages closer to the inserted average value.
 
 <br>
 
 ### Part 5: Are there differences in activity patterns between weekdays and weekends? Use the dataset with the filled-in missing values for this part.
+  
 **Create a new factor variable in the dataset with two levels -- "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.**  
 
 
